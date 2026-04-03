@@ -122,7 +122,7 @@ app.use((err: any, req: Request, res: Response, next: NextFunction) => {
   });
 });
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`🚀 SSOT Engram Enforcement Activo 🔥`);
   console.log(`[Route Registered]: GET /`);
@@ -130,6 +130,5 @@ app.listen(PORT, () => {
   console.log(`[Route Registered]: POST /api/todos`);
   console.log(`[Route Registered]: PATCH /api/todos/:id`);
   console.log(`[Route Registered]: DELETE /api/todos/:id`);
-  console.log(`Servidor de To-Dos corriendo en http://localhost:${PORT}`);
-  console.log(`Documentación disponible en http://localhost:${PORT}/docs`);
+  console.log(`Servidor de To-Dos corriendo en puerto ${PORT}`);
 });

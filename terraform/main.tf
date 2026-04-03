@@ -8,7 +8,7 @@ terraform {
 
   backend "azurerm" {
     resource_group_name  = "rg-terraform-state-mgm"
-    storage_account_name = "sttfstatetulio"
+    storage_account_name = "sttfstatetulio1775178408"
     container_name       = "tfstate"
     key                  = "todo-ssd.terraform.tfstate"
   }

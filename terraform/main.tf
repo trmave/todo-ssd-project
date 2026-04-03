@@ -63,6 +63,7 @@ resource "azurerm_linux_web_app" "app" {
   app_settings = {
     "WEBSITE_LOCAL_CACHE_OPTION"          = "Never"
     "WEBSITES_ENABLE_APP_SERVICE_STORAGE" = "true" # Habilita almacenamiento persistente
+    "DATABASE_URL"                        = "file:/home/data/todo.db"
   }
 }
 

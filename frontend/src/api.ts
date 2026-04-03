@@ -17,13 +17,13 @@ const rawApiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3000';
 const API_URL = rawApiUrl.replace(/\/$/, "");
 
 export async function getTodos(): Promise<Todo[]> {
-  const res = await fetch(`${API_URL}/api/todos`);
+  const res = await fetch(`${API_URL}/todos`);
   if (!res.ok) throw new Error('Failed to fetch todos');
   return res.json();
 }
 
 export async function createTodo(todo: TodoInput): Promise<Todo> {
-  const res = await fetch(`${API_URL}/api/todos`, {
+  const res = await fetch(`${API_URL}/todos`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(todo),
@@ -33,7 +33,7 @@ export async function createTodo(todo: TodoInput): Promise<Todo> {
 }
 
 export async function updateTodo(id: string, completed: boolean): Promise<void> {
-  const res = await fetch(`${API_URL}/api/todos/${id}`, {
+  const res = await fetch(`${API_URL}/todos/${id}`, {
     method: 'PATCH',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ completed }),
@@ -42,7 +42,7 @@ export async function updateTodo(id: string, completed: boolean): Promise<void> 
 }
 
 export async function deleteTodo(id: string): Promise<void> {
-  const res = await fetch(`${API_URL}/api/todos/${id}`, {
+  const res = await fetch(`${API_URL}/todos/${id}`, {
     method: 'DELETE',
   });
   if (!res.ok) throw new Error('Failed to delete todo');

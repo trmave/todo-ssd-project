@@ -4,11 +4,13 @@ info:
   description: API sencilla de tareas para demostrar el flujo de Spec-Driven Development.
   version: 1.0.0
 servers:
+  - url: https://app-todo-ssd-tulio.azurewebsites.net
+    description: Servidor de Producción (Azure)
   - url: http://localhost:3000
     description: Servidor de desarrollo local
 
 paths:
-  /todos:
+  /api/todos:
     get:
       summary: Listar todas las tareas
       responses:
@@ -36,7 +38,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Todo'
 
-  /todos/{id}:
+  /api/todos/{id}:
     parameters:
       - name: id
         in: path

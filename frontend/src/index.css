@@ -1,0 +1,75 @@
+@import "tailwindcss";
+
+@theme {
+  --color-surface-container-highest: #353534;
+  --color-inverse-surface: #e5e2e1;
+  --color-on-primary: #430088;
+  --color-primary-fixed: #eddcff;
+  --color-error: #ffb4ab;
+  --color-secondary-fixed-dim: #e6c440;
+  --color-inverse-primary: #7441be;
+  --color-primary-container: #7d4ac7;
+  --color-error-container: #93000a;
+  --color-on-background: #e5e2e1;
+  --color-surface-container-high: #2a2a2a;
+  --color-on-tertiary-container: #86fda7;
+  --color-tertiary-fixed-dim: #66dd8b;
+  --color-surface-tint: #d6baff;
+  --color-tertiary: #66dd8b;
+  --color-surface-bright: #3a3939;
+  --color-on-primary-container: #efe0ff;
+  --color-inverse-on-surface: #313030;
+  --color-surface-container: #201f1f;
+  --color-on-secondary-fixed: #231b00;
+  --color-on-primary-fixed: #280056;
+  --color-tertiary-container: #00763b;
+  --color-outline: #968d9e;
+  --color-primary: #d6baff;
+  --color-surface-container-lowest: #0e0e0e;
+  --color-secondary: #e6c440;
+  --color-on-error: #690005;
+  --color-secondary-container: #af9100;
+  --color-outline-variant: #4b4452;
+  --color-background: #131313;
+  --color-surface-variant: #353534;
+  --color-secondary-fixed: #ffe177;
+  --color-surface: #131313;
+  --color-on-secondary: #3b2f00;
+  --color-on-error-container: #ffdad6;
+  --color-on-secondary-fixed-variant: #554500;
+  --color-surface-dim: #131313;
+  --color-on-primary-fixed-variant: #5c24a5;
+  --color-on-tertiary: #003919;
+  --color-primary-fixed-dim: #d6baff;
+  --color-surface-container-low: #1c1b1b;
+  --color-tertiary-fixed: #83fba5;
+  --color-on-secondary-container: #362b00;
+  --color-on-surface: #e5e2e1;
+  --color-on-surface-variant: #cdc3d4;
+  --color-on-tertiary-fixed-variant: #005227;
+  --color-on-tertiary-fixed: #00210c;
+  
+  --font-headline: "Space Grotesk", sans-serif;
+  --font-body: "Inter", sans-serif;
+  --font-label: "Inter", sans-serif;
+}
+
+@layer base {
+  body {
+    background-color: #0a0a0a;
+    color: #e5e2e1;
+    font-family: var(--font-body);
+  }
+}
+
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+.glow-primary {
+  box-shadow: 0 0 15px rgba(125, 74, 199, 0.4);
+}
+.iridium-glass {
+  background: rgba(28, 27, 27, 0.6);
+  backdrop-filter: blur(20px);
+}
+

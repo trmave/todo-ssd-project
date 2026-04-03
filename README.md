@@ -37,14 +37,18 @@ Este proyecto cuenta con Pipelines estructurados para realizar despliegues ágil
 
 Si eres nuevo en el ecosistema de Node.js o en este proyecto, aquí tienes un mapa para navegar por las carpetas:
 
-### 📁 Carpetas Principales
-- **`src/`**: Aquí vive el código fuente (Source) del servidor.
+- **`src/`**: Aquí vive el código fuente del servidor backend. [(Detalles Técnicos)](./docs/markdown/backend.md)
   - `index.ts`: El punto de entrada de la aplicación.
-- **`prisma/`**: Contiene la configuración de la base de datos.
-  - `schema.prisma`: Define tus modelos de datos. Es el "plano" de tu base de datos.
-- **`terraform/`**: Código de "Infraestructura como Código". Define qué servidores y servicios compramos en Azure.
+- **`frontend/`**: Aquí vive toda la interfaz de usuario. [(Detalles Técnicos)](./docs/markdown/frontend.md)
+  - **`src/`**: El código de la aplicación React.
+    - `main.tsx`: El punto de inicio del frontend.
+    - `App.tsx`: El componente principal.
+    - `api.ts`: La capa que "habla" con el backend. [(Análisis de Código)](./docs/markdown/frontend.md#1-la-conexión-con-el-servidor-srcapits)
+- **`prisma/`**: Configuración de la base de datos. [(Detalles Técnicos)](./docs/markdown/database.md)
+  - `schema.prisma`: Define tus modelos de datos.
+- **`terraform/`**: Infraestructura como Código. [(Detalles Técnicos)](./docs/markdown/infrastructure.md)
 - **`docs/`**: Documentación técnica detallada y registros de decisiones (ADRs).
-- **`.github/workflows/`**: Los "robots" (GitHub Actions) que prueban y despliegan el código automáticamente.
+- **`.github/workflows/`**: Automatización de pruebas y despliegues. [(CI/CD Flow)](./docs/markdown/infrastructure.md#🚀-despliegue-automático)
 
 ### 🛠️ Conceptos Clave para Principiantes
 
@@ -58,4 +62,9 @@ Es una convención estándar. Separamos el código "sucio" de configuración del
 Este proyecto es **Spec-Driven**. Antes de escribir una sola línea de código para una nueva función, la definimos en este archivo. Es el contrato que tanto el Frontend como el Backend deben respetar.
 
 #### TypeScript vs JavaScript
-Usamos TypeScript (archivos `.ts`). Es como JavaScript pero con "superpoderes" de detección de errores. Si intentas usar algo que no existe, el editor te avisará antes de que el programa falle.
+Usamos TypeScript (archivos `.ts` y `.tsx`). Es como JavaScript pero con "superpoderes" de detección de errores. Si intentas usar algo que no existe, el editor te avisará antes de que el programa falle. 
+
+*Nota: Los archivos `.tsx` son especiales para React; permiten escribir HTML directamente dentro de nuestro código TypeScript.*
+
+#### ¿Qué es Vite?
+Vite es como un motor de carreras para el desarrollo. Hace que los cambios que hagas en el código se vean instantáneamente en el navegador sin tener que esperar.

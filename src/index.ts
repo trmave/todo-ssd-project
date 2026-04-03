@@ -11,7 +11,7 @@ const app = express();
 app.use(express.json());
 
 // Configuracion de CORS
-const allowedOrigins = ['http://localhost:5173', /^https:\/\/.*\.azurestaticapps\.net$/];
+const allowedOrigins = ['http://localhost:5173', 'https://purple-dune-0afb89c1e.2.azurestaticapps.net', /^https:\/\/.*\.azurestaticapps\.net$/];
 app.use(cors({
   origin: function (origin, callback) {
     if (!origin) return callback(null, true);

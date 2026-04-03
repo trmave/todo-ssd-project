@@ -58,6 +58,13 @@ resource "azurerm_linux_web_app" "app" {
     }
     # always_on = true no es soportado en la capa F1 (Free)
     always_on = false
+    cors {
+      allowed_origins = [
+        "https://purple-dune-0afb89c1e.2.azurestaticapps.net",
+        "http://localhost:5173"
+      ]
+      support_credentials = true
+    }
   }
 
   app_settings = {

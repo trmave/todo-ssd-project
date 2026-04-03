@@ -25,5 +25,8 @@ jobs:
       - name: Spectral Linter (Contract check)
         run: npx spectral lint openapi.yaml
 
+      - name: Generate Prisma Client
+        run: npx prisma generate
+
       - name: TypeScript Compiler (Linter)
         run: npx tsc --noEmit

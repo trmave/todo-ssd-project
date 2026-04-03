@@ -5,6 +5,13 @@ terraform {
       version = "~> 3.100"
     }
   }
+
+  backend "azurerm" {
+    resource_group_name  = "rg-terraform-state-mgm"
+    storage_account_name = "sttfstatetulio"
+    container_name       = "tfstate"
+    key                  = "todo-ssd.terraform.tfstate"
+  }
 }
 
 provider "azurerm" {

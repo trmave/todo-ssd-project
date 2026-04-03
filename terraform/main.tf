@@ -65,3 +65,23 @@ resource "azurerm_linux_web_app" "app" {
     "WEBSITES_ENABLE_APP_SERVICE_STORAGE" = "true" # Habilita almacenamiento persistente
   }
 }
+
+resource "azurerm_static_web_app" "swa" {
+  name                = "swa-todo-ssd-prod"
+  resource_group_name = azurerm_resource_group.rg.name
+  location            = "westus2"
+  sku_tier            = "Free"
+  sku_size            = "Free"
+  tags                = local.common_tags
+}
+
+output "static_web_app_url" {
+  value       = azurerm_static_web_app.swa.default_host_name
+  description = "The default host name of the Static Web App"
+}
+
+output "static_web_app_api_key" {
+  value       = azurerm_static_web_app.swa.api_key
+  sensitive   = true
+  description = "The API key for the Static Web App. Needed for Github Actions SWA deploy."
+}

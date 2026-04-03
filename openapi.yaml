@@ -1,0 +1,100 @@
+openapi: 3.0.3
+info:
+  title: Todo SSD API
+  description: API sencilla de tareas para demostrar el flujo de Spec-Driven Development.
+  version: 1.0.0
+servers:
+  - url: http://localhost:3000
+    description: Servidor de desarrollo local
+
+paths:
+  /todos:
+    get:
+      summary: Listar todas las tareas
+      responses:
+        '200':
+          description: Lista de tareas obtenida con éxito
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Todo'
+    post:
+      summary: Crear una nueva tarea
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TodoInput'
+      responses:
+        '201':
+          description: Tarea creada
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Todo'
+
+  /todos/{id}:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+    patch:
+      summary: Actualizar estado de una tarea
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                completed:
+                  type: boolean
+      responses:
+        '200':
+          description: Tarea actualizada
+    delete:
+      summary: Eliminar una tarea
+      responses:
+        '204':
+          description: Tarea eliminada correctamente
+
+components:
+  schemas:
+    Todo:
+      type: object
+      required:
+        - id
+        - title
+        - completed
+      properties:
+        id:
+          type: string
+          format: uuid
+          example: "550e8400-e29b-41d4-a716-446655440000"
+        title:
+          type: string
+          example: "Configurar Antigravity en mi equipo"
+        description:
+          type: string
+          example: "Instalar el orquestador y conectar Engram"
+        completed:
+          type: boolean
+          default: false
+        createdAt:
+          type: string
+          format: date-time
+
+    TodoInput:
+      type: object
+      required:
+        - title
+      properties:
+        title:
+          type: string
+        description:
+          type: string

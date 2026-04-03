@@ -32,3 +32,4 @@ Este proyecto cuenta con Pipelines estructurados para realizar despliegues ágil
 2. Cada Push o Pull Request en las ramas principales dispara validaciones del Contrato OpenAPI (Spectral), Linting y Type-checking.
 3. Se genera el **Prisma Client** de manera transitoria y se ejecuta el build.
 4. Tras validaciones exitosas, los despliegues se automatizan hacia la infraestructura de Azure.
+ 

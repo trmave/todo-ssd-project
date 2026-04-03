@@ -32,4 +32,30 @@ Este proyecto cuenta con Pipelines estructurados para realizar despliegues ágil
 2. Cada Push o Pull Request en las ramas principales dispara validaciones del Contrato OpenAPI (Spectral), Linting y Type-checking.
 3. Se genera el **Prisma Client** de manera transitoria y se ejecuta el build.
 4. Tras validaciones exitosas, los despliegues se automatizan hacia la infraestructura de Azure.
- 
+
+## 🗺️ Guía del Arquitecto: Estructura del Proyecto
+
+Si eres nuevo en el ecosistema de Node.js o en este proyecto, aquí tienes un mapa para navegar por las carpetas:
+
+### 📁 Carpetas Principales
+- **`src/`**: Aquí vive el código fuente (Source) del servidor.
+  - `index.ts`: El punto de entrada de la aplicación.
+- **`prisma/`**: Contiene la configuración de la base de datos.
+  - `schema.prisma`: Define tus modelos de datos. Es el "plano" de tu base de datos.
+- **`terraform/`**: Código de "Infraestructura como Código". Define qué servidores y servicios compramos en Azure.
+- **`docs/`**: Documentación técnica detallada y registros de decisiones (ADRs).
+- **`.github/workflows/`**: Los "robots" (GitHub Actions) que prueban y despliegan el código automáticamente.
+
+### 🛠️ Conceptos Clave para Principiantes
+
+#### ¿Qué es Prisma?
+Imagina que Prisma es un traductor inteligente. En lugar de escribir código complejo para hablar con la base de datos (SQL), usas Prisma para hablar en lenguaje de programación (TypeScript). Él se encarga de que todo coincida y sea seguro.
+
+#### ¿Por qué `src`?
+Es una convención estándar. Separamos el código "sucio" de configuración del código "limpio" que nosotros escribimos. Todo lo que esté en `src` es lo que realmente hace que la aplicación funcione.
+
+#### La Magia de `openapi.yaml`
+Este proyecto es **Spec-Driven**. Antes de escribir una sola línea de código para una nueva función, la definimos en este archivo. Es el contrato que tanto el Frontend como el Backend deben respetar.
+
+#### TypeScript vs JavaScript
+Usamos TypeScript (archivos `.ts`). Es como JavaScript pero con "superpoderes" de detección de errores. Si intentas usar algo que no existe, el editor te avisará antes de que el programa falle.

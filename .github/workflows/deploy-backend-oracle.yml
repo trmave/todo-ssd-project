@@ -1,0 +1,31 @@
+name: Deploy Backend to Oracle VM
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'src/**'
+      - 'prisma/**'
+      - 'Dockerfile'
+      - 'docker-compose.yml'
+      - 'package*.json'
+      - '.github/workflows/deploy-backend-oracle.yml'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to Oracle VM via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.ORACLE_HOST }}
+          username: ${{ secrets.ORACLE_USER }}
+          key: ${{ secrets.ORACLE_SSH_KEY }}
+          script: |
+            cd ~/todo-ssd-api
+            git pull origin main
+            docker compose down
+            # Aseguramos que el directorio data tenga permisos para el usuario node (1000)
+            sudo chown -R 1000:1000 ./data
+            docker compose up -d --build

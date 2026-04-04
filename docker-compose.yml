@@ -1,0 +1,12 @@
+services:
+  api:
+    build: .
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env
+    environment:
+      - DATABASE_URL=file:/app/data/todo.db
+    volumes:
+      - ./data:/app/data
+    restart: always

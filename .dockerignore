@@ -1,0 +1,15 @@
+node_modules
+dist
+.git
+.github
+terraform
+frontend
+*.db
+*.log
+.env.production
+docs
+.spectral.yaml
+agents.md
+implementation_plan.md
+task.md
+walkthrough.md

@@ -1,20 +1,24 @@
 # 🖥️ Deep Dive: Backend (Node.js + Express)
 
-Este documento explica cómo funciona el corazón de nuestro servidor en `src/index.ts`.
+Este documento explica cómo funciona el corazón de nuestro servidor, ahora centralizado en `src/infrastructure/server/app.ts` y arrancado desde `src/index.ts`.
 
 ## ⚙️ Tecnologías Utilizadas
 - **Express**: El framework que maneja las rutas web.
-- **CORS**: Un guardia de seguridad que permite que el frontend hable con el backend.
+- **CORS**: Un guardia de seguridad que permite que el frontend hable con el backend (específicamente configurado para Azure Static Web Apps).
 - **OpenAPI Validator**: Un "juez" que se asegura de que cada petición cumpla con el contrato `openapi.yaml`.
 - **Prisma**: Nuestro asistente para hablar con la base de datos sin escribir SQL complicado.
 
-## 🔍 Análisis del Código (`src/index.ts`)
+## 🔍 Análisis del Código (`src/infrastructure/server/app.ts`)
 
 ### 1. Configuración de Seguridad (CORS)
 ```typescript
-const allowedOrigins = ['http://localhost:5173', /^https:\/\/.*\.azurestaticapps\.net$/];
+const allowedOrigins = [
+  'http://localhost:5173', 
+  'https://purple-dune-0afb89c1e.2.azurestaticapps.net', 
+  /^https:\/\/.*\.azurestaticapps\.net$/
+];
 ```
-Aquí definimos quién tiene permiso para hacernos preguntas. Permitimos a nuestro entorno local y a cualquier sitio que termine en `.azurestaticapps.net` (nuestro frontend en producción).
+Aquí definimos quién tiene permiso para hacernos preguntas. Hemos incluido explícitamente la URL de producción del Frontend de Azure para evitar bloqueos por CORS.
 
 ### 2. El Contrato (SSOT)
 ```typescript

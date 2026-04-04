@@ -1,7 +1,7 @@
 variable "region" {
   type        = string
   description = "Región de Azure"
-  default     = "westus2"
+  default     = "eastus"
 }
 
 variable "subscription_id" {

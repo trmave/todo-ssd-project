@@ -26,5 +26,11 @@ Aquí definimos qué datos tiene cada tarea:
 - **createdAt**: Se guarda la fecha y hora exacta en que se creó.
 
 ## 🛠️ Comandos Útiles
-- `npx prisma migrate dev`: Guarda los cambios que hagas en este archivo en la base de datos real.
-- `npx prisma studio`: Abre una página web donde puedes ver y editar tus datos visualmente (¡muy útil!).
+## 🤖 La Carpeta `src/generated/prisma` (¡No Tocar!)
+
+En la carpeta `src/generated/prisma` vive el **Prisma Client**.
+- **¿Qué es?**: Es el código real que usamos en `index.ts` para hablar con la base de datos.
+- **¿De dónde viene?**: Se genera automáticamente cada vez que corres el comando `npx prisma generate` basándose en tu archivo `schema.prisma`.
+- **⚠️ REGLA DE ORO**: Nunca edites archivos dentro de esta carpeta manualmente. Cualquier cambio que hagas se borrará la próxima vez que se genere el cliente. Si quieres cambiar algo, cámbialo en `schema.prisma` y vuelve a generar el cliente.
+
+*Nota: Esta carpeta está en el archivo `.gitignore`, lo que significa que no se guarda en GitHub. Se crea "al vuelo" en cada máquina de desarrollador y en el servidor de despliegue.*

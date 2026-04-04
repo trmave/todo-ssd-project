@@ -27,5 +27,5 @@ jobs:
           output_location: "dist"
           app_build_command: "npm run build"
         env:
-          VITE_API_URL: "https://app-todo-ssd-tulio.azurewebsites.net/api"
-          VITE_API_BASE_URL: "https://app-todo-ssd-tulio.azurewebsites.net/api"
+          VITE_API_URL: "https://app-todo-ssd-tulio-v2.azurewebsites.net/api"
+          VITE_API_BASE_URL: "https://app-todo-ssd-tulio-v2.azurewebsites.net/api"

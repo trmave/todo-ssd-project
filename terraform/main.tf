@@ -37,7 +37,7 @@ resource "azurerm_resource_group" "rg" {
 }
 
 resource "azurerm_service_plan" "asp" {
-  name                = "asp-todo-ssd-prod"
+  name                = "asp-todo-ssd-prod-v2"
   resource_group_name = azurerm_resource_group.rg.name
   location            = azurerm_resource_group.rg.location
   os_type             = "Linux"
@@ -46,7 +46,7 @@ resource "azurerm_service_plan" "asp" {
 }
 
 resource "azurerm_linux_web_app" "app" {
-  name                = "app-todo-ssd-tulio"
+  name                = "app-todo-ssd-tulio-v2"
   resource_group_name = azurerm_resource_group.rg.name
   location            = azurerm_service_plan.asp.location
   service_plan_id     = azurerm_service_plan.asp.id
@@ -71,6 +71,7 @@ resource "azurerm_linux_web_app" "app" {
     "WEBSITE_LOCAL_CACHE_OPTION"          = "Never"
     "WEBSITES_ENABLE_APP_SERVICE_STORAGE" = "true" # Habilita almacenamiento persistente
     "DATABASE_URL"                        = "file:/home/data/todo.db"
+    "WEBSITES_CONTAINER_START_TIME_LIMIT" = "600"
   }
 }
 
